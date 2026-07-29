@@ -13,6 +13,6 @@ window.SCOPERTA_CONFIG = {
 
   CONTACT_EMAIL: "hello@scoperta.app",
 
-  // Client-side request timeout (generation takes 15-40 s)
-  REQUEST_TIMEOUT_MS: 90000
+  // Client-side request timeout (generation can take up to ~2 min on sparse areas)
+  REQUEST_TIMEOUT_MS: 150000
 };

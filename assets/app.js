@@ -503,7 +503,7 @@
       var t0 = Date.now();
 
       var ctrl = new AbortController();
-      var timeout = setTimeout(function () { ctrl.abort(); }, CFG.REQUEST_TIMEOUT_MS || 90000);
+      var timeout = setTimeout(function () { ctrl.abort(); }, CFG.REQUEST_TIMEOUT_MS || 150000);
 
       fetch((CFG.API_BASE || "") + "/api/v1/daytrip/generate", {
         method: "POST",
