@@ -15,6 +15,11 @@
     viewpoint: "🌄", destination: "📍"
   };
 
+  var WEATHER_ICONS = {
+    clear: "☀️", partly: "⛅", cloudy: "☁️", fog: "🌫️",
+    drizzle: "🌦️", rain: "🌧️", snow: "❄️", storm: "⛈️"
+  };
+
   var state = { shareUrl: null, map: null, leafletPromise: null };
 
   /* ── Analytics (GA4, consent-gated) ─────────────────────────── */
@@ -176,6 +181,47 @@
       var m2 = document.createElement("span");
       m2.textContent = "⏱️ " + fmtHours(it.totalDurationMin) + " " + (r.metaDuration || "");
       meta.appendChild(m2);
+    }
+
+    // weather chip (optional field — older shared trips won't have it)
+    var w = it.weather;
+    if (w && typeof w === "object") {
+      var chip = document.createElement("span");
+      chip.className = "weather-chip";
+      var parts = [WEATHER_ICONS[w.code] || "🌤️"];
+      if (w.tempMinC != null && w.tempMaxC != null) {
+        parts.push(Math.round(w.tempMinC) + "–" + Math.round(w.tempMaxC) + " °C");
+      } else if (w.tempMaxC != null) {
+        parts.push(Math.round(w.tempMaxC) + " °C");
+      }
+      if (w.precipitationChancePct != null && w.precipitationChancePct >= 30) {
+        parts.push("💧 " + Math.round(w.precipitationChancePct) + " %");
+      }
+      chip.textContent = parts.join(" ");
+      if (w.summary) { chip.title = w.summary; }
+      meta.insertBefore(chip, meta.firstChild);
+    }
+
+    // packing list card (optional field)
+    var packing = $("#packing");
+    if (packing) {
+      var packItems = Array.isArray(it.packingList) ? it.packingList : [];
+      packing.innerHTML = "";
+      if (packItems.length) {
+        var ph = document.createElement("h3");
+        ph.textContent = r.packTitle || "";
+        packing.appendChild(ph);
+        var pul = document.createElement("ul");
+        packItems.forEach(function (item) {
+          var pli = document.createElement("li");
+          pli.textContent = item;
+          pul.appendChild(pli);
+        });
+        packing.appendChild(pul);
+        packing.hidden = false;
+      } else {
+        packing.hidden = true;
+      }
     }
 
     var list = $("#timeline");

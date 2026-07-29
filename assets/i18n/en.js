@@ -18,6 +18,7 @@ window.SCOPERTA_I18N = {
     km: "km",
     min: "min",
     hoursShort: "h",
+    packTitle: "What to pack",
     tipsTitle: "Tips for the road",
     metaDistance: "total",
     metaDuration: "driving & exploring"

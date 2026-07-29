@@ -18,6 +18,7 @@ window.SCOPERTA_I18N = {
     km: "km",
     min: "min",
     hoursShort: "h",
+    packTitle: "Co si vzít",
     tipsTitle: "Tipy na cestu",
     metaDistance: "celkem",
     metaDuration: "na cestě i na místech"

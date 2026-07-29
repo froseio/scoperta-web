@@ -18,6 +18,7 @@ window.SCOPERTA_I18N = {
     km: "km",
     min: "min",
     hoursShort: "h",
+    packTitle: "Cosa portare",
     tipsTitle: "Consigli per il viaggio",
     metaDistance: "in totale",
     metaDuration: "tra viaggio e soste"

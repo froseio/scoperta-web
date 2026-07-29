@@ -437,6 +437,7 @@ def result_section(L, with_variant=True):
 <h2 id="result-title"></h2>
 <p id="result-summary" class="summary"></p>
 <div id="result-meta" class="meta"></div>
+<div id="packing" class="packing" hidden></div>
 <ol id="timeline" class="timeline"></ol>
 <div id="map" role="img" aria-label="Map"></div>
 <div class="result-actions">

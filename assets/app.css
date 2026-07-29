@@ -272,6 +272,27 @@ input[type="range"] {
   padding: 5px 12px;
 }
 
+.weather-chip { cursor: default; }
+
+/* packing list ("What to pack") */
+.packing {
+  margin-top: 18px;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 14px 18px;
+}
+.packing h3 { font-size: 0.95rem; margin-bottom: 8px; }
+.packing ul { list-style: none; display: grid; gap: 6px; }
+.packing li { padding-left: 24px; position: relative; font-size: 0.94rem; }
+.packing li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--pine);
+  font-weight: 800;
+}
+
 /* timeline */
 .timeline { list-style: none; margin: 26px 0; position: relative; }
 .timeline::before {
@@ -600,6 +621,10 @@ input[type="range"] {
   .hero { padding: 0; }
   .hero h1 { font-size: 1.4rem; }
   .stop-card { border: 1px solid #ccc; box-shadow: none; break-inside: avoid; }
+  /* weather chip + packing list belong to the itinerary — keep them in print */
+  .result .meta span { background: none; border: 1px solid #ccc; color: #000; }
+  .packing { border: 1px solid #ccc; box-shadow: none; break-inside: avoid; background: #fff; }
+  .packing li::before { color: #000; }
   .timeline::before { background: #ccc; }
   .timeline .dot { background: #333; color: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   .result { padding: 0; }
