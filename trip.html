@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="cs" data-locale="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sdílený výlet | Scoperta</title>
+<meta name="description" content="Podívej se na jednodenní výlet naplánovaný AI plánovačem Scoperta — zastávky, oběd i mapa.">
+<meta name="theme-color" content="#1E5A3C" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1A14" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://scoperta.app/trip.html">
+<link rel="alternate" hreflang="cs" href="https://scoperta.app/trip.html">
+<link rel="alternate" hreflang="en" href="https://scoperta.app/en/trip.html">
+<link rel="alternate" hreflang="de" href="https://scoperta.app/de/trip.html">
+<link rel="alternate" hreflang="it" href="https://scoperta.app/it/trip.html">
+<link rel="alternate" hreflang="x-default" href="https://scoperta.app/en/trip.html">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="assets/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Scoperta">
+<meta property="og:locale" content="cs_CZ">
+<meta property="og:title" content="Sdílený výlet | Scoperta">
+<meta property="og:description" content="Podívej se na jednodenní výlet naplánovaný AI plánovačem Scoperta — zastávky, oběd i mapa.">
+<meta property="og:url" content="https://scoperta.app/trip.html">
+<meta property="og:image" content="https://scoperta.app/assets/og/cs.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sdílený výlet | Scoperta">
+<meta name="twitter:description" content="Podívej se na jednodenní výlet naplánovaný AI plánovačem Scoperta — zastávky, oběd i mapa.">
+<meta name="twitter:image" content="https://scoperta.app/assets/og/cs.png">
+<link rel="stylesheet" href="assets/app.css">
+<script defer src="assets/config.js"></script>
+<script defer src="assets/i18n/cs.js"></script>
+<script defer src="assets/app.js"></script>
+
+</head>
+<body>
+<header class="site-header">
+<a class="brand" href="./"><img src="assets/favicon.svg" alt="" width="30" height="30">Scoperta</a>
+<nav class="lang-switch" aria-label="Language"><a href="trip.html" data-lang="cs" hreflang="cs" aria-current="true">CS</a><a href="en/trip.html" data-lang="en" hreflang="en">EN</a><a href="de/trip.html" data-lang="de" hreflang="de">DE</a><a href="it/trip.html" data-lang="it" hreflang="it">IT</a></nav>
+</header>
+<main id="trip-page">
+<section class="hero wrap">
+<div id="trip-intro" class="trip-hint">
+<h1>Sdílený výlet</h1>
+<p>Tady se zobrazí výlet, který ti někdo poslal. Odkaz musí obsahovat kód výletu — pokud vidíš tuhle zprávu, otevři odkaz přesně tak, jak ti přišel.</p>
+<p style="margin-top:14px"><a class="btn btn-accent" href="./">Naplánovat vlastní výlet</a></p>
+</div>
+<p id="trip-status" class="form-error" hidden aria-live="polite"></p>
+</section>
+<section id="result" class="result wrap" hidden aria-live="polite">
+<h2 id="result-title"></h2>
+<p id="result-summary" class="summary"></p>
+<div id="result-meta" class="meta"></div>
+<ol id="timeline" class="timeline"></ol>
+<div id="map" role="img" aria-label="Map"></div>
+<div class="result-actions">
+<button id="share-btn" class="btn btn-accent" type="button">📤 Sdílet</button>
+<button id="print-btn" class="btn" type="button">🖨️ Tisk</button>
+
+</div>
+<div id="tips" class="tips" hidden>
+<h3>💡 Tipy na cestu</h3>
+<p id="tips-text"></p>
+</div>
+</section>
+<section class="wrap tips-cta" style="padding:18px 0 30px">
+<a class="btn" href="./">Naplánovat vlastní výlet</a>
+</section>
+</main>
+<footer class="site-footer">
+<div class="wrap">
+<div class="foot-links">
+<a href="mailto:hello@scoperta.app">Napiš nám</a>
+<a href="privacy.html">Ochrana soukromí</a>
+</div>
+<p>Scoperta — jednodenní výlety plánované AI.</p>
+</div>
+</footer>
+<div id="cookie-bar" class="cookie-bar" hidden>
+<p>Používáme anonymní analytiku (Google Analytics), abychom věděli, co zlepšit. Je to OK?</p>
+<button id="cookie-accept" class="btn btn-accent" type="button">Povolit</button>
+<button id="cookie-decline" class="btn" type="button">Ne, díky</button>
+</div>
+</body>
+</html>

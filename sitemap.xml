@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://scoperta.app/</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://scoperta.app/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scoperta.app/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scoperta.app/de/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scoperta.app/it/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scoperta.app/en/"/>
+  </url>
+  <url>
+    <loc>https://scoperta.app/en/</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://scoperta.app/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scoperta.app/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scoperta.app/de/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scoperta.app/it/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scoperta.app/en/"/>
+  </url>
+  <url>
+    <loc>https://scoperta.app/de/</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://scoperta.app/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scoperta.app/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scoperta.app/de/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scoperta.app/it/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scoperta.app/en/"/>
+  </url>
+  <url>
+    <loc>https://scoperta.app/it/</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://scoperta.app/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scoperta.app/en/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scoperta.app/de/"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scoperta.app/it/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scoperta.app/en/"/>
+  </url>
+  <url>
+    <loc>https://scoperta.app/trip.html</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://scoperta.app/trip.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scoperta.app/en/trip.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scoperta.app/de/trip.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scoperta.app/it/trip.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scoperta.app/en/trip.html"/>
+  </url>
+  <url>
+    <loc>https://scoperta.app/en/trip.html</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://scoperta.app/trip.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scoperta.app/en/trip.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scoperta.app/de/trip.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scoperta.app/it/trip.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scoperta.app/en/trip.html"/>
+  </url>
+  <url>
+    <loc>https://scoperta.app/de/trip.html</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://scoperta.app/trip.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scoperta.app/en/trip.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scoperta.app/de/trip.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scoperta.app/it/trip.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scoperta.app/en/trip.html"/>
+  </url>
+  <url>
+    <loc>https://scoperta.app/it/trip.html</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://scoperta.app/trip.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scoperta.app/en/trip.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scoperta.app/de/trip.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scoperta.app/it/trip.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scoperta.app/en/trip.html"/>
+  </url>
+  <url>
+    <loc>https://scoperta.app/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://scoperta.app/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scoperta.app/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scoperta.app/de/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scoperta.app/it/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scoperta.app/en/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://scoperta.app/en/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://scoperta.app/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scoperta.app/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scoperta.app/de/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scoperta.app/it/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scoperta.app/en/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://scoperta.app/de/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://scoperta.app/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scoperta.app/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scoperta.app/de/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scoperta.app/it/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scoperta.app/en/privacy.html"/>
+  </url>
+  <url>
+    <loc>https://scoperta.app/it/privacy.html</loc>
+    <xhtml:link rel="alternate" hreflang="cs" href="https://scoperta.app/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://scoperta.app/en/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://scoperta.app/de/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://scoperta.app/it/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://scoperta.app/en/privacy.html"/>
+  </url>
+</urlset>

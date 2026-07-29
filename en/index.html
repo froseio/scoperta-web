@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" data-locale="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scoperta — AI Day Trip Planner | Trips with Kids & Dogs</title>
+<meta name="description" content="Tell Scoperta where you're starting from and who's coming along — it plans your whole day out: stops, lunch, a viewpoint and a map. AI day trip planner for families, dog owners and couples.">
+<meta name="theme-color" content="#1E5A3C" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1A14" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://scoperta.app/en/">
+<link rel="alternate" hreflang="cs" href="https://scoperta.app/">
+<link rel="alternate" hreflang="en" href="https://scoperta.app/en/">
+<link rel="alternate" hreflang="de" href="https://scoperta.app/de/">
+<link rel="alternate" hreflang="it" href="https://scoperta.app/it/">
+<link rel="alternate" hreflang="x-default" href="https://scoperta.app/en/">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="alternate icon" href="../assets/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Scoperta">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Scoperta — AI Day Trip Planner | Trips with Kids & Dogs">
+<meta property="og:description" content="Tell Scoperta where you're starting from and who's coming along — it plans your whole day out: stops, lunch, a viewpoint and a map. AI day trip planner for families, dog owners and couples.">
+<meta property="og:url" content="https://scoperta.app/en/">
+<meta property="og:image" content="https://scoperta.app/assets/og/en.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Scoperta — AI Day Trip Planner | Trips with Kids & Dogs">
+<meta name="twitter:description" content="Tell Scoperta where you're starting from and who's coming along — it plans your whole day out: stops, lunch, a viewpoint and a map. AI day trip planner for families, dog owners and couples.">
+<meta name="twitter:image" content="https://scoperta.app/assets/og/en.png">
+<link rel="stylesheet" href="../assets/app.css">
+<script defer src="../assets/config.js"></script>
+<script defer src="../assets/i18n/en.js"></script>
+<script defer src="../assets/app.js"></script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Scoperta", "url": "https://scoperta.app/en/", "description": "Tell Scoperta where you're starting from and who's coming along — it plans your whole day out: stops, lunch, a viewpoint and a map. AI day trip planner for families, dog owners and couples.", "applicationCategory": "TravelApplication", "operatingSystem": "Web", "inLanguage": "en", "offers": [{"@type": "Offer", "name": "Scoperta Plus (monthly)", "price": "3.99", "priceCurrency": "EUR"}, {"@type": "Offer", "name": "Scoperta Plus (yearly)", "price": "23.99", "priceCurrency": "EUR"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What does Scoperta do?", "acceptedAnswer": {"@type": "Answer", "text": "It plans a one-day trip by car: where to go, where to stop, where to have lunch and when to head back. You get a timeline of stops plus a map."}}, {"@type": "Question", "name": "Is it free?", "acceptedAnswer": {"@type": "Answer", "text": "Planning a trip is free, no sign-up needed. If you want to plan more trips per day and save them, that's what the upcoming Scoperta Plus is for."}}, {"@type": "Question", "name": "How does “surprise me” work?", "acceptedAnswer": {"@type": "Answer", "text": "Leave the destination empty, set a radius in kilometres, and Scoperta picks a lovely place within reach on its own."}}, {"@type": "Question", "name": "Does it account for kids and dogs?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Tick that kids or a dog are coming and we favour places where they're welcome — stops get notes written just for them."}}, {"@type": "Question", "name": "Do I need an account?", "acceptedAnswer": {"@type": "Answer", "text": "No. Type where you start and who's coming, and you'll have a plan in under a minute. No account, no email."}}]}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">&#8595;</a>
+<header class="site-header">
+<a class="brand" href="../"><img src="../assets/favicon.svg" alt="" width="30" height="30">Scoperta</a>
+<nav class="lang-switch" aria-label="Language"><a href="../" data-lang="cs" hreflang="cs">CS</a><a href="../en/" data-lang="en" hreflang="en" aria-current="true">EN</a><a href="../de/" data-lang="de" hreflang="de">DE</a><a href="../it/" data-lang="it" hreflang="it">IT</a></nav>
+</header>
+<main id="main">
+<section class="hero wrap">
+<h1>Tell us where you start and who's coming. <em>AI plans your whole day.</em></h1>
+<p class="sub">Stops, lunch and a viewpoint along the way — a ready-made day trip plan with a map. Works with kids, dogs, or “surprise me”.</p>
+<form id="trip-form" class="trip-form" novalidate="">
+<div class="row-2">
+<div class="field">
+<label for="origin">Starting from</label>
+<input type="text" id="origin" name="origin" required autocomplete="off" placeholder="e.g. Munich">
+</div>
+<div class="field">
+<label for="area">Where to / area <span class="hint">(optional)</span></label>
+<input type="text" id="area" name="area" autocomplete="off" placeholder="leave empty and we'll surprise you">
+</div>
+</div>
+<div class="field radius-field" id="radius-field">
+<label for="radius">How far at most? <output id="radius-out" for="radius">50</output>&nbsp;km</label>
+<input type="range" id="radius" name="radius" min="20" max="120" step="5" value="50">
+</div>
+<div class="field">
+<span class="chips-label" id="companions-label"><label>Who's coming</label></span>
+<div class="chips" role="group" aria-labelledby="companions-label">
+<button type="button" class="chip" data-value="kids" aria-pressed="false">👨‍👩‍👧 kids</button>
+<button type="button" class="chip" data-value="dog" aria-pressed="false">🐕 dog</button>
+<button type="button" class="chip" data-value="couple" aria-pressed="false">💑 just us two</button>
+<button type="button" class="chip" data-value="friends" aria-pressed="false">🧑‍🤝‍🧑 friends</button>
+<button type="button" class="chip" data-value="solo" aria-pressed="false">🚶 solo</button>
+</div>
+</div>
+<div class="row-2">
+<div class="field">
+<label for="date">When</label>
+<input type="date" id="date" name="date">
+</div>
+<div class="field">
+<span class="chips-label" id="pace-label"><label>Pace</label></span>
+<div class="segmented" role="group" aria-labelledby="pace-label">
+<button type="button" data-pace="relaxed" aria-pressed="true">Relaxed</button>
+<button type="button" data-pace="active" aria-pressed="false">Active</button>
+</div>
+</div>
+</div>
+<p id="form-error" class="form-error" hidden></p>
+<button type="submit" id="submit-btn" class="cta">Plan my day</button>
+</form>
+</section>
+<section id="loading" class="loading wrap" hidden aria-live="polite">
+<div class="spinner" aria-hidden="true"></div>
+<p class="msg" id="loading-msg"></p>
+<p class="note">This usually takes 15–40 seconds — the AI is picking stops and building your route.</p>
+<div class="skeleton" aria-hidden="true"><div></div><div></div><div></div></div>
+</section>
+<section id="result" class="result wrap" hidden aria-live="polite">
+<h2 id="result-title"></h2>
+<p id="result-summary" class="summary"></p>
+<div id="result-meta" class="meta"></div>
+<ol id="timeline" class="timeline"></ol>
+<div id="map" role="img" aria-label="Map"></div>
+<div class="result-actions">
+<button id="share-btn" class="btn btn-accent" type="button">📤 Share</button>
+<button id="print-btn" class="btn" type="button">🖨️ Print</button>
+<button id="variant-btn" class="btn" type="button">✨ Another idea</button>
+</div>
+<div id="tips" class="tips" hidden>
+<h3>💡 Tips for the road</h3>
+<p id="tips-text"></p>
+</div>
+</section>
+<section class="how wrap">
+<h2>How it works</h2>
+<ol class="steps">
+<li><h3>Say where & who</h3><p>Just the town you're starting from. You can leave the destination to us — only say how far you're willing to drive.</p></li>
+<li><h3>AI builds your day</h3><p>It picks the stops, plans where to eat and works out the timing so the day actually flows.</p></li>
+<li><h3>Follow the map</h3><p>You get the itinerary as a timeline and a map. Share it with the others or print it out.</p></li>
+</ol>
+</section>
+<section class="faq wrap">
+<h2>Frequently asked questions</h2>
+<details><summary>What does Scoperta do?</summary><p>It plans a one-day trip by car: where to go, where to stop, where to have lunch and when to head back. You get a timeline of stops plus a map.</p></details>
+<details><summary>Is it free?</summary><p>Planning a trip is free, no sign-up needed. If you want to plan more trips per day and save them, that's what the upcoming Scoperta Plus is for.</p></details>
+<details><summary>How does “surprise me” work?</summary><p>Leave the destination empty, set a radius in kilometres, and Scoperta picks a lovely place within reach on its own.</p></details>
+<details><summary>Does it account for kids and dogs?</summary><p>Yes. Tick that kids or a dog are coming and we favour places where they're welcome — stops get notes written just for them.</p></details>
+<details><summary>Do I need an account?</summary><p>No. Type where you start and who's coming, and you'll have a plan in under a minute. No account, no email.</p></details>
+</section>
+</main>
+<footer class="site-footer">
+<div class="wrap">
+<div class="foot-links">
+<a href="mailto:hello@scoperta.app">Contact us</a>
+<a href="../en/privacy.html">Privacy</a>
+</div>
+<p>Scoperta — day trips planned by AI.</p>
+</div>
+</footer>
+<div id="paywall" class="modal-backdrop" hidden>
+<div class="modal" role="dialog" aria-modal="true" aria-labelledby="pw-title">
+<button class="close" type="button" aria-label="Close">✕</button>
+<div id="paywall-main">
+<span class="plus-badge">Scoperta Plus</span>
+<h2 id="pw-title">More trips, more discovering.</h2>
+<ul>
+<li>Unlimited trips every day</li>
+<li>Saved trips in one place</li>
+<li>Coming soon: mobile app</li>
+</ul>
+<div class="plans">
+<button class="plan-btn" type="button" data-plan="monthly"><span>Monthly</span><span class="price">€3.99/mo</span></button>
+<button class="plan-btn secondary" type="button" data-plan="yearly"><span>Yearly</span><span class="price">€23.99/yr</span></button>
+</div>
+<p class="founder-note">Founding membership: first month on us, cancel anytime.</p>
+</div>
+<div id="paywall-fallback" class="member-fallback" hidden>
+<span class="plus-badge">Scoperta Plus</span>
+<h2>Coming soon!</h2>
+<p>We're just finishing Scoperta Plus. Drop us a line and you'll be among the first to know — founding members get the first month free.</p>
+<p style="margin-top:14px"><a class="btn btn-accent" href="mailto:hello@scoperta.app?subject=Scoperta%20Plus">Keep me posted</a></p>
+</div>
+</div>
+</div>
+<div id="cookie-bar" class="cookie-bar" hidden>
+<p>We use anonymous analytics (Google Analytics) to learn what to improve. Is that OK?</p>
+<button id="cookie-accept" class="btn btn-accent" type="button">Allow</button>
+<button id="cookie-decline" class="btn" type="button">No thanks</button>
+</div>
+</body>
+</html>
