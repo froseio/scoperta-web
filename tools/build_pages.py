@@ -329,6 +329,8 @@ ${hreflang}
 <meta name="twitter:description" content="${desc}">
 <meta name="twitter:image" content="${og_img}">
 <link rel="stylesheet" href="${a}app.css">
+<link rel="preconnect" href="https://unpkg.com" crossorigin>
+<link rel="dns-prefetch" href="https://tile.openstreetmap.org">
 <script defer src="${a}config.js"></script>
 <script defer src="${a}i18n/${lang}.js"></script>
 <script defer src="${a}app.js"></script>""").substitute(
