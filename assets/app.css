@@ -630,3 +630,5 @@ input[type="range"] {
   .result { padding: 0; }
   a { color: #000; text-decoration: none; }
 }
+
+.analytics-choice { background: none; border: 0; padding: 0; color: inherit; font: inherit; cursor: pointer; text-decoration: underline; }

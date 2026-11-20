@@ -3,9 +3,6 @@ window.SCOPERTA_CONFIG = {
   // Backend (ChargeChill APIServer hosts the daytrip endpoints)
   API_BASE: "https://api.chargechill.app",
 
-  // GA4: leave empty string to keep analytics completely OFF.
-  GA4_MEASUREMENT_ID: "",
-
   // Stripe payment links. "#" = not live yet -> paywall buttons show
   // the "founding member" mailto fallback instead of redirecting.
   STRIPE_URL_MONTHLY: "#",

@@ -34,6 +34,7 @@
 <link rel="dns-prefetch" href="https://tile.openstreetmap.org">
 <script defer src="../assets/config.js"></script>
 <script defer src="../assets/i18n/de.js"></script>
+<script defer src="../assets/analytics.js"></script>
 <script defer src="../assets/app.js"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Scoperta", "url": "https://scoperta.app/de/", "description": "Sag Scoperta, wo du startest und wer mitkommt — und die KI plant deinen ganzen Tagesausflug: Stopps, Mittagessen, Aussichtspunkt und Karte. Ideal für Familien, Hundebesitzer und Paare.", "applicationCategory": "TravelApplication", "operatingSystem": "Web", "inLanguage": "de", "offers": [{"@type": "Offer", "name": "Scoperta Plus (monthly)", "price": "3.99", "priceCurrency": "EUR"}, {"@type": "Offer", "name": "Scoperta Plus (yearly)", "price": "23.99", "priceCurrency": "EUR"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Was kann Scoperta?", "acceptedAnswer": {"@type": "Answer", "text": "Sie plant einen Tagesausflug mit dem Auto: wohin, wo anhalten, wo zu Mittag essen und wann zurückfahren. Du bekommst eine Zeitleiste mit Stopps und eine Karte."}}, {"@type": "Question", "name": "Ist das kostenlos?", "acceptedAnswer": {"@type": "Answer", "text": "Einen Ausflug zu planen ist kostenlos, ohne Registrierung. Wer täglich mehr Ausflüge planen und speichern will, für den ist das kommende Scoperta Plus gedacht."}}, {"@type": "Question", "name": "Wie funktioniert „überrasch mich“?", "acceptedAnswer": {"@type": "Answer", "text": "Lass das Ziel leer und stell nur den Umkreis in Kilometern ein — Scoperta sucht dann selbst ein schönes Ziel in deiner Reichweite aus."}}, {"@type": "Question", "name": "Werden Kinder und Hunde berücksichtigt?", "acceptedAnswer": {"@type": "Answer", "text": "Ja. Wenn du angibst, dass Kinder oder ein Hund mitkommen, bevorzugen wir Orte, an denen sie willkommen sind — mit eigenen Hinweisen bei den Stopps."}}, {"@type": "Question", "name": "Muss ich mich registrieren?", "acceptedAnswer": {"@type": "Answer", "text": "Nein. Du tippst ein, wo du startest und wer mitkommt — kurz darauf steht dein Plan. Kein Konto, keine E-Mail."}}]}</script>
@@ -135,6 +136,7 @@
 <div class="foot-links">
 <a href="mailto:hello@scoperta.app">Schreib uns</a>
 <a href="../de/privacy.html">Datenschutz</a>
+<button id="analytics-choice" class="analytics-choice" type="button" hidden>Statistik-Einstellungen</button>
 </div>
 <p>Scoperta — Tagesausflüge, geplant von KI.</p>
 </div>
@@ -165,7 +167,7 @@
 </div>
 </div>
 <div id="cookie-bar" class="cookie-bar" hidden>
-<p>Wir nutzen anonyme Statistik (Google Analytics), um zu sehen, was wir verbessern können. Ist das OK?</p>
+<p>Darf Scoperta die Nutzung mit unserer eigenen Statistik Tassello messen?</p>
 <button id="cookie-accept" class="btn btn-accent" type="button">Erlauben</button>
 <button id="cookie-decline" class="btn" type="button">Nein, danke</button>
 </div>

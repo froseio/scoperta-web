@@ -34,6 +34,7 @@
 <link rel="dns-prefetch" href="https://tile.openstreetmap.org">
 <script defer src="../assets/config.js"></script>
 <script defer src="../assets/i18n/de.js"></script>
+<script defer src="../assets/analytics.js"></script>
 <script defer src="../assets/app.js"></script>
 
 </head>
@@ -53,7 +54,7 @@
 <li><strong>Geteilte Ausflüge</strong> bekommen einen anonymen Link. Wer den Link hat, sieht den Ausflug.</li>
 </ul>
 <h2>Statistik</h2>
-<p>Wir verwenden Google Analytics 4 — aber nur, wenn du es in der Cookie-Leiste erlaubst. Wir messen anonym, was auf der Seite funktioniert (z. B. wie viele die Planung abschließen). Lehnst du ab, läuft gar keine Statistik.</p>
+<p>Nach deiner Zustimmung vergibt Tassello eine zufällige Browser-ID. Erfasst werden Seitenaufrufe, Planungsschritte, Gerätetyp, Seitensprache sowie Status und Dauer von zwei Arten von Serveranfragen. Formularinhalte, Orte, Freigabelinks und Anfrageinhalte werden ausgeschlossen. Ausstehende Ereignisse bleiben im Browser. Beim nächsten Versuch verwerfen wir Ereignisse, die älter als sieben Tage sind. In den Statistik-Einstellungen am Seitenende kannst du deine Wahl ändern. Ablehnen entfernt die lokale ID und ausstehende Ereignisse.</p>
 <h2>Kontakt</h2>
 <p>Alles rund um Datenschutz: <a href="mailto:hello@scoperta.app">hello@scoperta.app</a>.</p>
 <p style="margin-top:24px"><a href="../">← Zurück zu Scoperta</a></p>
@@ -64,9 +65,15 @@
 <div class="foot-links">
 <a href="mailto:hello@scoperta.app">Schreib uns</a>
 <a href="../de/privacy.html">Datenschutz</a>
+<button id="analytics-choice" class="analytics-choice" type="button" hidden>Statistik-Einstellungen</button>
 </div>
 <p>Scoperta — Tagesausflüge, geplant von KI.</p>
 </div>
 </footer>
+<div id="cookie-bar" class="cookie-bar" hidden>
+<p>Darf Scoperta die Nutzung mit unserer eigenen Statistik Tassello messen?</p>
+<button id="cookie-accept" class="btn btn-accent" type="button">Erlauben</button>
+<button id="cookie-decline" class="btn" type="button">Nein, danke</button>
+</div>
 </body>
 </html>

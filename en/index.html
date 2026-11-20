@@ -34,6 +34,7 @@
 <link rel="dns-prefetch" href="https://tile.openstreetmap.org">
 <script defer src="../assets/config.js"></script>
 <script defer src="../assets/i18n/en.js"></script>
+<script defer src="../assets/analytics.js"></script>
 <script defer src="../assets/app.js"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Scoperta", "url": "https://scoperta.app/en/", "description": "Tell Scoperta where you're starting from and who's coming along — it plans your whole day out: stops, lunch, a viewpoint and a map. AI day trip planner for families, dog owners and couples.", "applicationCategory": "TravelApplication", "operatingSystem": "Web", "inLanguage": "en", "offers": [{"@type": "Offer", "name": "Scoperta Plus (monthly)", "price": "3.99", "priceCurrency": "EUR"}, {"@type": "Offer", "name": "Scoperta Plus (yearly)", "price": "23.99", "priceCurrency": "EUR"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "What does Scoperta do?", "acceptedAnswer": {"@type": "Answer", "text": "It plans a one-day trip by car: where to go, where to stop, where to have lunch and when to head back. You get a timeline of stops plus a map."}}, {"@type": "Question", "name": "Is it free?", "acceptedAnswer": {"@type": "Answer", "text": "Planning a trip is free, no sign-up needed. If you want to plan more trips per day and save them, that's what the upcoming Scoperta Plus is for."}}, {"@type": "Question", "name": "How does “surprise me” work?", "acceptedAnswer": {"@type": "Answer", "text": "Leave the destination empty, set a radius in kilometres, and Scoperta picks a lovely place within reach on its own."}}, {"@type": "Question", "name": "Does it account for kids and dogs?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Tick that kids or a dog are coming and we favour places where they're welcome — stops get notes written just for them."}}, {"@type": "Question", "name": "Do I need an account?", "acceptedAnswer": {"@type": "Answer", "text": "No. Type where you start and who's coming, and you'll have a plan in under a minute. No account, no email."}}]}</script>
@@ -135,6 +136,7 @@
 <div class="foot-links">
 <a href="mailto:hello@scoperta.app">Contact us</a>
 <a href="../en/privacy.html">Privacy</a>
+<button id="analytics-choice" class="analytics-choice" type="button" hidden>Analytics settings</button>
 </div>
 <p>Scoperta — day trips planned by AI.</p>
 </div>
@@ -165,7 +167,7 @@
 </div>
 </div>
 <div id="cookie-bar" class="cookie-bar" hidden>
-<p>We use anonymous analytics (Google Analytics) to learn what to improve. Is that OK?</p>
+<p>Allow Scoperta to measure usage with our own Tassello analytics?</p>
 <button id="cookie-accept" class="btn btn-accent" type="button">Allow</button>
 <button id="cookie-decline" class="btn" type="button">No thanks</button>
 </div>

@@ -34,6 +34,7 @@
 <link rel="dns-prefetch" href="https://tile.openstreetmap.org">
 <script defer src="../assets/config.js"></script>
 <script defer src="../assets/i18n/en.js"></script>
+<script defer src="../assets/analytics.js"></script>
 <script defer src="../assets/app.js"></script>
 
 </head>
@@ -53,7 +54,7 @@
 <li><strong>Shared trips</strong> get an anonymous link. Anyone with the link can view the trip.</li>
 </ul>
 <h2>Analytics</h2>
-<p>We use Google Analytics 4, but only if you allow it in the cookie bar. We measure anonymously what works on the site (e.g. how many people finish planning). If you decline, no analytics run at all.</p>
+<p>If you allow analytics, Tassello assigns your browser a random ID. It records page views, planning steps, device class, page language, and the status and duration of two types of request to our server. We exclude form contents, locations, share links and request bodies. Pending events are stored in your browser. On the next attempt we discard events older than seven days. Use Analytics settings in the footer to change your choice. Declining removes the local ID and pending events.</p>
 <h2>Contact</h2>
 <p>Anything privacy-related: <a href="mailto:hello@scoperta.app">hello@scoperta.app</a>.</p>
 <p style="margin-top:24px"><a href="../">← Back to Scoperta</a></p>
@@ -64,9 +65,15 @@
 <div class="foot-links">
 <a href="mailto:hello@scoperta.app">Contact us</a>
 <a href="../en/privacy.html">Privacy</a>
+<button id="analytics-choice" class="analytics-choice" type="button" hidden>Analytics settings</button>
 </div>
 <p>Scoperta — day trips planned by AI.</p>
 </div>
 </footer>
+<div id="cookie-bar" class="cookie-bar" hidden>
+<p>Allow Scoperta to measure usage with our own Tassello analytics?</p>
+<button id="cookie-accept" class="btn btn-accent" type="button">Allow</button>
+<button id="cookie-decline" class="btn" type="button">No thanks</button>
+</div>
 </body>
 </html>
