@@ -13,7 +13,7 @@
     "itinerary_failed", "stop_clicked", "share_clicked", "print_clicked", "variant_clicked",
     "paywall_viewed", "checkout_clicked", "lang_switched"]);
   let screen, locale, timer, pending, delay = 1000;
-  let controller;
+  let controller, sendingConsent;
   function choice() {
     try { return localStorage.getItem(choiceKey); } catch { return null; }
   }
@@ -30,7 +30,7 @@
     try {
       const now = Date.now();
       let s = JSON.parse(sessionStorage.getItem(tabKey) || "null");
-      if (!s || s.consent !== consent || now < s.last || now - s.last > 1800_000) {
+      if (!s || s.consent !== consent || now < s.last || now - s.last > 1800_000 || now - s.started >= 86400_000) {
         let device = "unknown";
         if (typeof matchMedia === "function") {
           const coarse = matchMedia("(pointer: coarse)").matches;
@@ -87,6 +87,7 @@
       }
       if (!batch.length || choice() !== consent) return;
       controller = new AbortController();
+      sendingConsent = consent;
       const timeout = setTimeout(() => controller?.abort(), 12_000);
       let response;
       try {
@@ -105,7 +106,7 @@
       }
     } catch { delay = Math.min(delay * 2, 60_000); }
     finally {
-      controller = null; pending = false;
+      controller = null; sendingConsent = null; pending = false;
       try { if (granted(choice()) && entries().length) schedule(delay); } catch { /* storage disabled */ }
     }
   }
@@ -117,7 +118,15 @@
     screen = document.querySelector("#trip-form") ? "planner" : document.querySelector("#trip-page") ? "shared_trip" : "privacy";
     locale = document.documentElement.getAttribute("data-locale");
     if (!["cs", "en", "de", "it"].includes(locale)) return;
-    function refresh() { const value = choice(); bar.hidden = value === "denied" || granted(value); }
+    function refresh() {
+      const value = choice();
+      bar.hidden = value === "denied" || granted(value);
+      if (sendingConsent && value !== sendingConsent) controller?.abort();
+      try {
+        const previous = JSON.parse(sessionStorage.getItem(tabKey) || "null");
+        if (previous && previous.consent !== value) sessionStorage.removeItem(tabKey);
+      } catch { /* unavailable tab storage */ }
+    }
     function deny() {
       try {
         localStorage.setItem(choiceKey, "denied");

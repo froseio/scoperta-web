@@ -29,7 +29,8 @@
   function fetchTrip(name, url, options) {
     const complete = CFG.API_BASE === "https://api.chargechill.app" ? window.ScopertaAnalytics?.network(name) : undefined;
     return fetch(url, options).then(response => {
-      complete?.(response.status);
+      // Responses reached through a redirect do not describe the registered API route.
+      if (!response.redirected && (!response.url || response.url === url)) complete?.(response.status);
       return response;
     }, error => {
       complete?.(0);
