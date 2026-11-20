@@ -51,7 +51,8 @@ LOCALES = {
         "pw_fb_title": "Už brzy!",
         "pw_fb_text": "Scoperta Plus právě dokončujeme. Napiš nám a dáme ti vědět mezi prvními — jako zakládající člen budeš mít první měsíc zdarma.",
         "pw_fb_cta": "Chci vědět první",
-        "cookie_text": "Používáme anonymní analytiku (Google Analytics), abychom věděli, co zlepšit. Je to OK?",
+        "cookie_text": "Souhlasíš s měřením používání Scoperty pomocí našeho Tassella?",
+        "analytics_settings": "Nastavení analytiky",
         "cookie_yes": "Povolit", "cookie_no": "Ne, díky",
         "trip_title": "Sdílený výlet | Scoperta",
         "trip_desc": "Podívej se na jednodenní výlet naplánovaný AI plánovačem Scoperta — zastávky, oběd i mapa.",
@@ -69,7 +70,7 @@ LOCALES = {
 <li><strong>Sdílené výlety</strong> dostanou anonymní odkaz. Kdo má odkaz, výlet uvidí.</li>
 </ul>
 <h2>Analytika</h2>
-<p>Používáme Google Analytics 4, ale jen pokud to v cookie liště povolíš. Měříme anonymně, co na webu funguje (např. kolik lidí dokončí plánování). Když souhlas nedáš, žádná analytika se nespouští.</p>
+<p>Po povolení analytiky Tassello přiřadí prohlížeči náhodné ID. Měří zobrazené stránky, kroky plánování, typ zařízení, jazyk stránky a stav a dobu odezvy dvou typů požadavků na náš server. Obsah formulářů, místa, sdílecí odkazy ani těla požadavků nesbíráme. Při výpadku čekají události v prohlížeči. Při dalším pokusu se události starší sedmi dnů zahodí. Volbu můžeš změnit v nastavení analytiky v patičce. Odmítnutí odstraní místní ID a neodeslané události.</p>
 <h2>Kontakt</h2>
 <p>Cokoli k soukromí: <a href="mailto:hello@scoperta.app">hello@scoperta.app</a>.</p>
 """,
@@ -116,7 +117,8 @@ LOCALES = {
         "pw_fb_title": "Coming soon!",
         "pw_fb_text": "We're just finishing Scoperta Plus. Drop us a line and you'll be among the first to know — founding members get the first month free.",
         "pw_fb_cta": "Keep me posted",
-        "cookie_text": "We use anonymous analytics (Google Analytics) to learn what to improve. Is that OK?",
+        "cookie_text": "Allow Scoperta to measure usage with our own Tassello analytics?",
+        "analytics_settings": "Analytics settings",
         "cookie_yes": "Allow", "cookie_no": "No thanks",
         "trip_title": "Shared Trip | Scoperta",
         "trip_desc": "Take a look at a day trip planned by Scoperta, the AI day trip planner — stops, lunch and a map.",
@@ -134,7 +136,7 @@ LOCALES = {
 <li><strong>Shared trips</strong> get an anonymous link. Anyone with the link can view the trip.</li>
 </ul>
 <h2>Analytics</h2>
-<p>We use Google Analytics 4, but only if you allow it in the cookie bar. We measure anonymously what works on the site (e.g. how many people finish planning). If you decline, no analytics run at all.</p>
+<p>If you allow analytics, Tassello assigns your browser a random ID. It records page views, planning steps, device class, page language, and the status and duration of two types of request to our server. We exclude form contents, locations, share links and request bodies. Pending events are stored in your browser. On the next attempt we discard events older than seven days. Use Analytics settings in the footer to change your choice. Declining removes the local ID and pending events.</p>
 <h2>Contact</h2>
 <p>Anything privacy-related: <a href="mailto:hello@scoperta.app">hello@scoperta.app</a>.</p>
 """,
@@ -181,7 +183,8 @@ LOCALES = {
         "pw_fb_title": "Bald verfügbar!",
         "pw_fb_text": "Scoperta Plus ist fast fertig. Schreib uns und du erfährst es als eine/r der Ersten — Gründungsmitglieder bekommen den ersten Monat gratis.",
         "pw_fb_cta": "Haltet mich auf dem Laufenden",
-        "cookie_text": "Wir nutzen anonyme Statistik (Google Analytics), um zu sehen, was wir verbessern können. Ist das OK?",
+        "cookie_text": "Darf Scoperta die Nutzung mit unserer eigenen Statistik Tassello messen?",
+        "analytics_settings": "Statistik-Einstellungen",
         "cookie_yes": "Erlauben", "cookie_no": "Nein, danke",
         "trip_title": "Geteilter Ausflug | Scoperta",
         "trip_desc": "Schau dir einen Tagesausflug an, geplant mit Scoperta, dem KI-Ausflugsplaner — Stopps, Mittagessen und Karte.",
@@ -199,7 +202,7 @@ LOCALES = {
 <li><strong>Geteilte Ausflüge</strong> bekommen einen anonymen Link. Wer den Link hat, sieht den Ausflug.</li>
 </ul>
 <h2>Statistik</h2>
-<p>Wir verwenden Google Analytics 4 — aber nur, wenn du es in der Cookie-Leiste erlaubst. Wir messen anonym, was auf der Seite funktioniert (z. B. wie viele die Planung abschließen). Lehnst du ab, läuft gar keine Statistik.</p>
+<p>Nach deiner Zustimmung vergibt Tassello eine zufällige Browser-ID. Erfasst werden Seitenaufrufe, Planungsschritte, Gerätetyp, Seitensprache sowie Status und Dauer von zwei Arten von Serveranfragen. Formularinhalte, Orte, Freigabelinks und Anfrageinhalte werden ausgeschlossen. Ausstehende Ereignisse bleiben im Browser. Beim nächsten Versuch verwerfen wir Ereignisse, die älter als sieben Tage sind. In den Statistik-Einstellungen am Seitenende kannst du deine Wahl ändern. Ablehnen entfernt die lokale ID und ausstehende Ereignisse.</p>
 <h2>Kontakt</h2>
 <p>Alles rund um Datenschutz: <a href="mailto:hello@scoperta.app">hello@scoperta.app</a>.</p>
 """,
@@ -246,7 +249,8 @@ LOCALES = {
         "pw_fb_title": "In arrivo!",
         "pw_fb_text": "Stiamo ultimando Scoperta Plus. Scrivici e sarai tra i primi a saperlo — i membri fondatori hanno il primo mese gratis.",
         "pw_fb_cta": "Tenetemi aggiornato",
-        "cookie_text": "Usiamo statistiche anonime (Google Analytics) per capire cosa migliorare. Va bene?",
+        "cookie_text": "Consenti a Scoperta di misurare l’utilizzo con il nostro servizio Tassello?",
+        "analytics_settings": "Impostazioni statistiche",
         "cookie_yes": "Consenti", "cookie_no": "No, grazie",
         "trip_title": "Gita condivisa | Scoperta",
         "trip_desc": "Guarda una gita di un giorno organizzata da Scoperta, il pianificatore di gite con AI — tappe, pranzo e mappa.",
@@ -264,7 +268,7 @@ LOCALES = {
 <li><strong>Le gite condivise</strong> ricevono un link anonimo. Chi ha il link può vedere la gita.</li>
 </ul>
 <h2>Statistiche</h2>
-<p>Usiamo Google Analytics 4, ma solo se lo consenti nella barra dei cookie. Misuriamo in forma anonima cosa funziona sul sito (per esempio quante persone completano la pianificazione). Se rifiuti, nessuna statistica viene attivata.</p>
+<p>Con il tuo consenso Tassello assegna al browser un ID casuale. Registra le pagine viste, i passaggi di pianificazione, il tipo di dispositivo, la lingua e lo stato e la durata di due tipi di richieste al nostro server. Escludiamo contenuti dei moduli, luoghi, link di condivisione e corpi delle richieste. Gli eventi in attesa restano nel browser. Al tentativo successivo scartiamo quelli più vecchi di sette giorni. Puoi cambiare scelta nelle impostazioni statistiche a piè di pagina. Il rifiuto elimina l’ID locale e gli eventi in attesa.</p>
 <h2>Contatti</h2>
 <p>Per qualsiasi domanda sulla privacy: <a href="mailto:hello@scoperta.app">hello@scoperta.app</a>.</p>
 """,
@@ -333,6 +337,7 @@ ${hreflang}
 <link rel="dns-prefetch" href="https://tile.openstreetmap.org">
 <script defer src="${a}config.js"></script>
 <script defer src="${a}i18n/${lang}.js"></script>
+<script defer src="${a}analytics.js"></script>
 <script defer src="${a}app.js"></script>""").substitute(
         title=page_title, desc=page_desc, canonical=canonical,
         hreflang=hreflang_links(page), a=a, og_locale=L["og_locale"],
@@ -387,11 +392,12 @@ def footer_html(L, extra_langs_page):
 <div class="foot-links">
 <a href="mailto:hello@scoperta.app">${contact}</a>
 <a href="${privacy}">${privacy_label}</a>
+<button id="analytics-choice" class="analytics-choice" type="button" hidden>${analytics_settings}</button>
 </div>
 <p>${tag}</p>
 </div>
 </footer>""").substitute(contact=L["footer_contact"], privacy=privacy,
-                         privacy_label=L["footer_privacy"], tag=L["footer_tag"])
+                         privacy_label=L["footer_privacy"], analytics_settings=L["analytics_settings"], tag=L["footer_tag"])
 
 
 def paywall_html(L):
@@ -580,8 +586,9 @@ ${content}
 <p style="margin-top:24px"><a href="${home}">${back}</a></p>
 </article>
 </main>
-${footer}""").substitute(
-        header=header_html(L, "privacy.html"), h1=L["privacy_h1"],
+${footer}
+${cookie}""").substitute(
+        cookie=cookie_html(L), header=header_html(L, "privacy.html"), h1=L["privacy_h1"],
         content=L["privacy_body"].strip(), home=home, back=L["back_home"],
         footer=footer_html(L, "privacy.html"))
     return page_shell(L, "privacy.html", L["privacy_title"],

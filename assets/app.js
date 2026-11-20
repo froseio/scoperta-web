@@ -22,42 +22,18 @@
 
   var state = { shareUrl: null, map: null, leafletPromise: null };
 
-  /* ── Analytics (GA4, consent-gated) ─────────────────────────── */
-
-  function track(name, params) {
-    if (window.gtag) { window.gtag("event", name, params || {}); }
+  function track(name) {
+    window.ScopertaAnalytics?.track(name);
   }
 
-  function loadGA() {
-    var id = CFG.GA4_MEASUREMENT_ID;
-    if (!id || window.gtag) { return; }
-    var s = document.createElement("script");
-    s.async = true;
-    s.src = "https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(id);
-    document.head.appendChild(s);
-    window.dataLayer = window.dataLayer || [];
-    window.gtag = function () { window.dataLayer.push(arguments); };
-    window.gtag("js", new Date());
-    window.gtag("config", id, { anonymize_ip: true });
-  }
-
-  function initConsent() {
-    var bar = $("#cookie-bar");
-    if (!bar) { return; }
-    var choice = null;
-    try { choice = localStorage.getItem("scoperta.consent"); } catch (e) {}
-    if (!CFG.GA4_MEASUREMENT_ID) { return; }              // analytics fully off
-    if (choice === "granted") { loadGA(); return; }
-    if (choice === "denied") { return; }
-    bar.hidden = false;
-    $("#cookie-accept").addEventListener("click", function () {
-      try { localStorage.setItem("scoperta.consent", "granted"); } catch (e) {}
-      bar.hidden = true;
-      loadGA();
-    });
-    $("#cookie-decline").addEventListener("click", function () {
-      try { localStorage.setItem("scoperta.consent", "denied"); } catch (e) {}
-      bar.hidden = true;
+  function fetchTrip(name, url, options) {
+    const complete = CFG.API_BASE === "https://api.chargechill.app" ? window.ScopertaAnalytics?.network(name) : undefined;
+    return fetch(url, options).then(response => {
+      complete?.(response.status);
+      return response;
+    }, error => {
+      complete?.(0);
+      throw error;
     });
   }
 
@@ -281,7 +257,7 @@
       }
 
       card.addEventListener("click", function () {
-        track("stop_clicked", { kind: s.kind, index: i });
+        track("stop_clicked");
       });
 
       li.appendChild(card);
@@ -312,16 +288,16 @@
         var sh = T.share || {};
         if (navigator.share) {
           navigator.share({ title: sh.title || "Scoperta", url: url }).then(function () {
-            track("share_clicked", { method: "native" });
+            track("share_clicked");
           }).catch(function () {});
         } else if (navigator.clipboard) {
           navigator.clipboard.writeText(url).then(function () {
-            track("share_clicked", { method: "copy" });
+            track("share_clicked");
             flash(shareBtn, sh.copied || "✔");
           });
         } else {
           window.prompt(sh.copyFail || "Link:", url);
-          track("share_clicked", { method: "prompt" });
+          track("share_clicked");
         }
       });
     }
@@ -336,7 +312,7 @@
     if (variantBtn) {
       variantBtn.addEventListener("click", function () {
         track("variant_clicked");
-        openPaywall("variant");
+        openPaywall();
       });
     }
   }
@@ -349,14 +325,14 @@
 
   /* ── Paywall ────────────────────────────────────────────────── */
 
-  function openPaywall(trigger) {
+  function openPaywall() {
     var pw = $("#paywall");
     if (!pw) { return; }
     $("#paywall-main").hidden = false;
     $("#paywall-fallback").hidden = true;
     pw.hidden = false;
     document.body.style.overflow = "hidden";
-    track("paywall_viewed", { trigger: trigger });
+    track("paywall_viewed");
   }
 
   function closePaywall() {
@@ -380,7 +356,7 @@
     $$(".plan-btn", pw).forEach(function (btn) {
       btn.addEventListener("click", function () {
         var plan = btn.getAttribute("data-plan");
-        track("checkout_clicked", { plan: plan });
+        track("checkout_clicked");
         var url = plan === "yearly" ? CFG.STRIPE_URL_YEARLY : CFG.STRIPE_URL_MONTHLY;
         if (!url || url === "#") {
           $("#paywall-main").hidden = true;
@@ -473,7 +449,7 @@
 
       // fake-door: 2nd submit the same day -> paywall (server limits 3/IP anyway)
       if (tripCount() >= 1) {
-        openPaywall("second_trip");
+        openPaywall();
         return;
       }
 
@@ -492,20 +468,15 @@
       if (areaVal) { payload.area = areaVal; }
       else { payload.radiusKm = parseInt(radius.value, 10); }
 
-      track("itinerary_requested", {
-        companions: companions.join(","),
-        has_area: !!areaVal,
-        radius: areaVal ? undefined : parseInt(radius.value, 10)
-      });
+      track("itinerary_requested");
 
       $("#result").hidden = true;
       startLoading();
-      var t0 = Date.now();
 
       var ctrl = new AbortController();
       var timeout = setTimeout(function () { ctrl.abort(); }, CFG.REQUEST_TIMEOUT_MS || 150000);
 
-      fetch((CFG.API_BASE || "") + "/api/v1/daytrip/generate", {
+      fetchTrip("generate_request", (CFG.API_BASE || "") + "/api/v1/daytrip/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -523,10 +494,7 @@
         stopLoading();
         bumpTripCount();
         state.shareUrl = data.shareUrl || null;
-        track("itinerary_generated", {
-          latency_ms: Date.now() - t0,
-          stops_count: (data.itinerary && data.itinerary.stops || []).length
-        });
+        track("itinerary_generated");
         renderItinerary(data.itinerary || {});
         $("#result").scrollIntoView({ block: "start", behavior: "smooth" });
       }).catch(function (err) {
@@ -540,7 +508,7 @@
         else if (err.status === 503) { code = 503; msg = err.reason || E.capacity; }
         else if (err.status) { code = err.status; msg = err.reason || E.generic; }
         else { code = "network"; msg = E.network; }
-        track("itinerary_failed", { code: String(code) });
+        track("itinerary_failed");
         showError(msg || E.generic || "Error");
       });
     });
@@ -568,7 +536,7 @@
     status.textContent = tt.loading || "…";
     status.hidden = false;
 
-    fetch((CFG.API_BASE || "") + "/api/v1/shared/trip/" + encodeURIComponent(token))
+    fetchTrip("shared_trip_request", (CFG.API_BASE || "") + "/api/v1/shared/trip/" + encodeURIComponent(token))
       .then(function (resp) {
         if (resp.status === 404) { var e = new Error("nf"); e.notFound = true; throw e; }
         if (!resp.ok) { throw new Error("api"); }
@@ -593,7 +561,7 @@
   function initLangSwitch() {
     $$(".lang-switch a").forEach(function (a) {
       a.addEventListener("click", function () {
-        track("lang_switched", { to: a.getAttribute("data-lang") });
+        track("lang_switched");
       });
     });
   }
@@ -601,7 +569,7 @@
   /* ── Boot ───────────────────────────────────────────────────── */
 
   function boot() {
-    initConsent();
+    window.ScopertaAnalytics?.start();
     initLangSwitch();
     initPaywall();
     initResultActions();

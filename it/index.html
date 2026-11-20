@@ -34,6 +34,7 @@
 <link rel="dns-prefetch" href="https://tile.openstreetmap.org">
 <script defer src="../assets/config.js"></script>
 <script defer src="../assets/i18n/it.js"></script>
+<script defer src="../assets/analytics.js"></script>
 <script defer src="../assets/app.js"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Scoperta", "url": "https://scoperta.app/it/", "description": "Di' a Scoperta da dove parti e con chi — e l'AI organizza la tua gita di un giorno: tappe, pranzo, punto panoramico e mappa. Perfetta per famiglie, cani e coppie.", "applicationCategory": "TravelApplication", "operatingSystem": "Web", "inLanguage": "it", "offers": [{"@type": "Offer", "name": "Scoperta Plus (monthly)", "price": "3.99", "priceCurrency": "EUR"}, {"@type": "Offer", "name": "Scoperta Plus (yearly)", "price": "23.99", "priceCurrency": "EUR"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Cosa fa Scoperta?", "acceptedAnswer": {"@type": "Answer", "text": "Organizza una gita di un giorno in auto: dove andare, dove fermarsi, dove pranzare e quando rientrare. Il risultato è una linea del tempo con le tappe e una mappa."}}, {"@type": "Question", "name": "È gratis?", "acceptedAnswer": {"@type": "Answer", "text": "Organizzare una gita è gratuito, senza registrazione. Per chi vuole pianificare più gite al giorno e salvarle arriverà Scoperta Plus."}}, {"@type": "Question", "name": "Come funziona «sorprendimi»?", "acceptedAnswer": {"@type": "Answer", "text": "Lascia vuota la meta e imposta solo il raggio in chilometri: Scoperta sceglierà da sola un bel posto a portata di mano."}}, {"@type": "Question", "name": "Tiene conto di bambini e cani?", "acceptedAnswer": {"@type": "Answer", "text": "Sì. Se indichi che vengono bambini o il cane, preferiamo posti dove sono benvenuti — e alle tappe trovi note pensate per loro."}}, {"@type": "Question", "name": "Devo registrarmi?", "acceptedAnswer": {"@type": "Answer", "text": "No. Scrivi da dove parti e con chi, e in meno di un minuto hai il piano. Niente account, niente email."}}]}</script>
@@ -135,6 +136,7 @@
 <div class="foot-links">
 <a href="mailto:hello@scoperta.app">Scrivici</a>
 <a href="../it/privacy.html">Privacy</a>
+<button id="analytics-choice" class="analytics-choice" type="button" hidden>Impostazioni statistiche</button>
 </div>
 <p>Scoperta — gite di un giorno organizzate dall'AI.</p>
 </div>
@@ -165,7 +167,7 @@
 </div>
 </div>
 <div id="cookie-bar" class="cookie-bar" hidden>
-<p>Usiamo statistiche anonime (Google Analytics) per capire cosa migliorare. Va bene?</p>
+<p>Consenti a Scoperta di misurare l’utilizzo con il nostro servizio Tassello?</p>
 <button id="cookie-accept" class="btn btn-accent" type="button">Consenti</button>
 <button id="cookie-decline" class="btn" type="button">No, grazie</button>
 </div>

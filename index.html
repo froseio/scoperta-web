@@ -34,6 +34,7 @@
 <link rel="dns-prefetch" href="https://tile.openstreetmap.org">
 <script defer src="assets/config.js"></script>
 <script defer src="assets/i18n/cs.js"></script>
+<script defer src="assets/analytics.js"></script>
 <script defer src="assets/app.js"></script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebApplication", "name": "Scoperta", "url": "https://scoperta.app/", "description": "Napiš, odkud vyrážíš a s kým — Scoperta ti naplánuje celý den: zastávky, oběd, vyhlídku i mapu. AI plánovač výletů pro rodiny s dětmi, se psem i ve dvou.", "applicationCategory": "TravelApplication", "operatingSystem": "Web", "inLanguage": "cs", "offers": [{"@type": "Offer", "name": "Scoperta Plus (monthly)", "price": "99", "priceCurrency": "CZK"}, {"@type": "Offer", "name": "Scoperta Plus (yearly)", "price": "599", "priceCurrency": "CZK"}]}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Co Scoperta umí?", "acceptedAnswer": {"@type": "Answer", "text": "Naplánuje ti jednodenní výlet autem: kam jet, kde zastavit, kde se naobědvat a kdy vyrazit zpátky. Výsledek dostaneš jako časovou osu se zastávkami a mapou."}}, {"@type": "Question", "name": "Je to zdarma?", "acceptedAnswer": {"@type": "Answer", "text": "Naplánování výletu je zdarma, bez registrace. Kdo chce plánovat víc výletů denně a ukládat si je, tomu je určena připravovaná Scoperta Plus."}}, {"@type": "Question", "name": "Jak funguje „překvap mě“?", "acceptedAnswer": {"@type": "Answer", "text": "Když necháš cíl prázdný, nastavíš jen okruh v kilometrech a Scoperta sama vybere hezké místo, které to od tebe nemá daleko."}}, {"@type": "Question", "name": "Počítá plán s dětmi a se psem?", "acceptedAnswer": {"@type": "Answer", "text": "Ano. Když zaškrtneš, že jedou děti nebo pes, vybíráme místa, kde jsou vítaní, a u zastávek uvidíš poznámky přímo pro ně."}}, {"@type": "Question", "name": "Musím se registrovat?", "acceptedAnswer": {"@type": "Answer", "text": "Ne. Zadáš odkud a s kým, a za chvíli máš plán. Žádný účet, žádný e-mail."}}]}</script>
@@ -135,6 +136,7 @@
 <div class="foot-links">
 <a href="mailto:hello@scoperta.app">Napiš nám</a>
 <a href="privacy.html">Ochrana soukromí</a>
+<button id="analytics-choice" class="analytics-choice" type="button" hidden>Nastavení analytiky</button>
 </div>
 <p>Scoperta — jednodenní výlety plánované AI.</p>
 </div>
@@ -165,7 +167,7 @@
 </div>
 </div>
 <div id="cookie-bar" class="cookie-bar" hidden>
-<p>Používáme anonymní analytiku (Google Analytics), abychom věděli, co zlepšit. Je to OK?</p>
+<p>Souhlasíš s měřením používání Scoperty pomocí našeho Tassella?</p>
 <button id="cookie-accept" class="btn btn-accent" type="button">Povolit</button>
 <button id="cookie-decline" class="btn" type="button">Ne, díky</button>
 </div>

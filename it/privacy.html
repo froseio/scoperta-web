@@ -34,6 +34,7 @@
 <link rel="dns-prefetch" href="https://tile.openstreetmap.org">
 <script defer src="../assets/config.js"></script>
 <script defer src="../assets/i18n/it.js"></script>
+<script defer src="../assets/analytics.js"></script>
 <script defer src="../assets/app.js"></script>
 
 </head>
@@ -53,7 +54,7 @@
 <li><strong>Le gite condivise</strong> ricevono un link anonimo. Chi ha il link può vedere la gita.</li>
 </ul>
 <h2>Statistiche</h2>
-<p>Usiamo Google Analytics 4, ma solo se lo consenti nella barra dei cookie. Misuriamo in forma anonima cosa funziona sul sito (per esempio quante persone completano la pianificazione). Se rifiuti, nessuna statistica viene attivata.</p>
+<p>Con il tuo consenso Tassello assegna al browser un ID casuale. Registra le pagine viste, i passaggi di pianificazione, il tipo di dispositivo, la lingua e lo stato e la durata di due tipi di richieste al nostro server. Escludiamo contenuti dei moduli, luoghi, link di condivisione e corpi delle richieste. Gli eventi in attesa restano nel browser. Al tentativo successivo scartiamo quelli più vecchi di sette giorni. Puoi cambiare scelta nelle impostazioni statistiche a piè di pagina. Il rifiuto elimina l’ID locale e gli eventi in attesa.</p>
 <h2>Contatti</h2>
 <p>Per qualsiasi domanda sulla privacy: <a href="mailto:hello@scoperta.app">hello@scoperta.app</a>.</p>
 <p style="margin-top:24px"><a href="../">← Torna a Scoperta</a></p>
@@ -64,9 +65,15 @@
 <div class="foot-links">
 <a href="mailto:hello@scoperta.app">Scrivici</a>
 <a href="../it/privacy.html">Privacy</a>
+<button id="analytics-choice" class="analytics-choice" type="button" hidden>Impostazioni statistiche</button>
 </div>
 <p>Scoperta — gite di un giorno organizzate dall'AI.</p>
 </div>
 </footer>
+<div id="cookie-bar" class="cookie-bar" hidden>
+<p>Consenti a Scoperta di misurare l’utilizzo con il nostro servizio Tassello?</p>
+<button id="cookie-accept" class="btn btn-accent" type="button">Consenti</button>
+<button id="cookie-decline" class="btn" type="button">No, grazie</button>
+</div>
 </body>
 </html>
