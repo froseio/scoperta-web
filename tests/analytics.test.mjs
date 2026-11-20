@@ -8,13 +8,25 @@ const script = readFileSync(new URL("../assets/analytics.js", import.meta.url), 
 const storage = () => Object.create({
   getItem(k) {return this[k] ?? null;}, setItem(k,v) {this[k]=v;}, removeItem(k) {delete this[k];},
 });
-function tab({local = storage(), session = storage(), origin = "http://127.0.0.1:5173", clock = Date, status = () => 202} = {}) {
+function lockManager() {
+  const held = new Set();
+  return {async request(name, options, callback) {
+    assert.equal(options.ifAvailable, true);
+    await Promise.resolve();
+    if (held.has(name)) return callback(null);
+    held.add(name);
+    try { return await callback({name}); } finally { held.delete(name); }
+  }};
+}
+const defaultLocks = lockManager();
+const settle = () => new Promise(resolve => setImmediate(resolve));
+function tab({local = storage(), session = storage(), origin = "http://127.0.0.1:5173", clock = Date, locks = defaultLocks, status = () => 202} = {}) {
   const sent = [], handlers = new Map(), nodes = new Map();
   const el = id => {
     if (!nodes.has(id)) nodes.set(id, {hidden:true,focus(){},addEventListener(name, f) {this[name] = f;}});
     return nodes.get(id);
   };
-  const env = {Date:clock, window:{}, location:{origin}, document:{
+  const env = {Date:clock, window:{}, navigator:{locks}, location:{origin}, document:{
     querySelector:el, documentElement:{getAttribute:()=>"cs"}, addEventListener(){},
   }, localStorage:local, sessionStorage:session, crypto:{randomUUID}, performance, AbortController,
   setTimeout, clearTimeout, addEventListener:(name,f)=>handlers.set(name,f),
@@ -23,7 +35,7 @@ function tab({local = storage(), session = storage(), origin = "http://127.0.0.1
   runInNewContext(script,env);
   const app = env.window.ScopertaAnalytics;
   app.start();
-  return {app, local, session, sent, click:id=>el(id).click?.(), flush:()=>handlers.get("online")?.(), notify:() =>handlers.get("storage")?.({key:"scoperta.analytics.v1.choice"})};
+  return {app, local, session, sent, click:id=>el(id).click?.(), hide:()=>handlers.get("pagehide")?.(), restore:()=>handlers.get("pageshow")?.({persisted:true}), flush:async()=>{await settle();return handlers.get("online")?.();}, notify:() =>handlers.get("storage")?.({key:"scoperta.analytics.v1.choice"})};
 }
 
 test("opt-in gates pages and interaction, redacts inputs, separates planning traffic", async () => {
@@ -48,6 +60,7 @@ test("transient failure survives reload; revocation blocks pending requests and 
   const old=tab({status:()=>503});
   old.click("#cookie-accept"); old.app.track("form_started"); await old.flush();
   const before=old.sent[0].body, finish=old.app.network("generate_request");
+  old.hide();await settle();
   const next=tab({local:old.local,session:old.session});
   await next.flush();
   assert.equal(next.sent[0].body.installation,before.installation);
@@ -71,6 +84,7 @@ test("revocation removes the previous session and installation from every open t
   const b = tab({local:a.local});
   b.app.track("form_started");
   const key = "scoperta.analytics.v1.session";
+  await settle();
   const oldA = JSON.parse(a.session.getItem(key));
   const oldB = JSON.parse(b.session.getItem(key));
   assert.notEqual(oldA.session,oldB.session);
@@ -117,5 +131,50 @@ test("shared trip still handles redirected replies without reporting their HTTP 
     await new Promise(resolve=>setImmediate(resolve));
     assert.equal(nodes["#trip-status"].textContent,"Not found");
     assert.deepEqual(seen,shouldMeasure ? [["shared_trip_request",404]] : []);
+  }
+});
+
+test("copied session storage is exclusive during simultaneous opens and reusable on navigation", async () => {
+  const key = "scoperta.analytics.v1.session", local = storage(), locks = lockManager();
+  const first = tab({local, locks});
+  first.click("#cookie-accept"); await first.flush();
+  const read = t => JSON.parse(t.session.getItem(key));
+  const original = read(first);
+  const copy = () => Object.assign(storage(),first.session);
+  const second = tab({local,locks,session:copy()}), third = tab({local,locks,session:copy()});
+  await settle();
+  const ids = [original.session,read(second).session,read(third).session];
+  assert.equal(new Set(ids).size,3);
+  assert.equal(read(second).consent,original.consent);
+  assert.equal(read(third).consent,original.consent);
+  first.hide(); await settle();
+  const next = tab({local,locks,session:first.session});
+  await settle(); assert.equal(read(next).session,original.session);
+  next.hide(); await settle(); first.restore();
+  await settle(); assert.equal(read(first).session,original.session);
+  first.click("#cookie-decline");second.notify();third.notify();next.notify();
+});
+
+test("two simultaneous documents compete for one unlocked inherited session", async () => {
+  const local = storage(), locks = lockManager(), first = tab({local, locks});
+  first.click("#cookie-accept"); await first.flush(); first.hide(); await settle();
+  const cloned = Object.assign(storage(),first.session);
+  const left = tab({local,locks,session:first.session}), right = tab({local,locks,session:cloned});
+  await settle();
+  const key = "scoperta.analytics.v1.session";
+  const ids = [left,right].map(t=>JSON.parse(t.session.getItem(key)).session);
+  assert.equal(new Set(ids).size,2);
+  assert.ok(ids.includes(first.sent[0].body.session));
+  left.click("#cookie-decline");right.notify();first.notify();
+});
+
+test("unavailable or denied arbitration starts a new session per document", async () => {
+  for (const locks of [null,{request:async()=>{throw Error("unavailable");}}]) {
+    const first=tab({locks});first.click("#cookie-accept");await first.flush();
+    const next=tab({locks,local:first.local,session:Object.assign(storage(),first.session)});
+    await next.flush();
+    assert.notEqual(first.sent[0].body.session,next.sent[0].body.session);
+    assert.equal(first.sent[0].body.installation,next.sent[0].body.installation);
+    next.click("#cookie-decline");first.notify();
   }
 });

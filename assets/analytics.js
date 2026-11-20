@@ -24,19 +24,61 @@
   function read(key) {
     try { return JSON.parse(localStorage.getItem(key)); } catch { return null; }
   }
-  function context() {
+  // sessionStorage is copied when a tab is duplicated. Only a document holding
+  // the exclusive origin lock may continue the session associated with this tab ID.
+  let ownership, suspended = false;
+  function releaseTab() {
+    const previous = ownership;
+    ownership = null;
+    previous?.release?.();
+  }
+  function claimTab(consent) {
+    if (ownership?.consent === consent) return ownership.ready;
+    releaseTab();
+    const attempt = {consent};
+    ownership = attempt;
+    attempt.ready = new Promise(resolve => {
+      function fallback() {
+        // Without arbitration a restored tab cannot prove it is the original.
+        resolve("document:" + crypto.randomUUID());
+      }
+      function request(id, inherited) {
+        navigator.locks.request(namespace + "tab." + id, {ifAvailable: true}, lock => {
+          if (ownership !== attempt) { resolve(null); return; }
+          if (!lock) {
+            if (inherited) request(crypto.randomUUID(), false);
+            else fallback();
+            return;
+          }
+          resolve(id);
+          return new Promise(release => { attempt.release = release; });
+        }).catch(fallback);
+      }
+      try {
+        if (!globalThis.navigator?.locks) { fallback(); return; }
+        const old = JSON.parse(sessionStorage.getItem(tabKey) || "null");
+        const inherited = old?.consent === consent && old.tab && !old.tab.startsWith("document:");
+        request(inherited ? old.tab : crypto.randomUUID(), Boolean(inherited));
+      } catch { fallback(); }
+    });
+    return attempt.ready;
+  }
+  async function context() {
     const consent = choice();
-    if (!supportedOrigin || !screen || !granted(consent)) return null;
+    if (suspended || !supportedOrigin || !screen || !granted(consent)) return null;
     try {
       const now = Date.now();
+      const owner = claimTab(consent);
+      const tab = await owner;
+      if (!tab || ownership?.ready !== owner || choice() !== consent) return null;
       let s = JSON.parse(sessionStorage.getItem(tabKey) || "null");
-      if (!s || s.consent !== consent || now < s.last || now - s.last > 1800_000 || now - s.started >= 86400_000) {
+      if (!s || s.tab !== tab || s.consent !== consent || now < s.last || now - s.last > 1800_000 || now - s.started >= 86400_000) {
         let device = "unknown";
         if (typeof matchMedia === "function") {
           const coarse = matchMedia("(pointer: coarse)").matches;
           device = coarse ? (matchMedia("(min-width: 768px)").matches ? "tablet" : "handheld") : "desktop";
         }
-        s = {consent, session: crypto.randomUUID(), started: now, device, locale};
+        s = {tab, consent, session: crypto.randomUUID(), started: now, device, locale};
       }
       s.last = now;
       // Preserve the order of actions that occur within one browser clock tick.
@@ -62,12 +104,17 @@
       if (!pending && !timer) schedule(150);
     } catch { /* Storage or randomness unavailable: collection stays inactive. */ }
   }
-  function track(name) { if (actions.has(name)) enqueue(context(), name); }
+  async function track(name) {
+    if (actions.has(name)) enqueue(await context(), name);
+  }
   function network(name) {
     if (name !== "generate_request" && name !== "shared_trip_request") return () => {};
     const c = context();
     const started = performance.now();
-    return status => enqueue(c, name, {status, duration: Math.min(600_000, Math.max(0, Math.round(performance.now() - started)))});
+    return async status => {
+      const duration = Math.min(600_000, Math.max(0, Math.round(performance.now() - started)));
+      enqueue(await c, name, {status, duration});
+    };
   }
   async function flush() {
     clearTimeout(timer); timer = null;
@@ -121,6 +168,7 @@
     function refresh() {
       const value = choice();
       bar.hidden = value === "denied" || granted(value);
+      if (ownership && value !== ownership.consent) releaseTab();
       if (sendingConsent && value !== sendingConsent) controller?.abort();
       try {
         const previous = JSON.parse(sessionStorage.getItem(tabKey) || "null");
@@ -151,6 +199,10 @@
         if (!granted(choice())) { controller?.abort(); clearTimeout(timer); timer = null; }
         refresh();
       }
+    });
+    addEventListener("pagehide", () => { suspended = true; releaseTab(); });
+    addEventListener("pageshow", event => {
+      if (event.persisted) { suspended = false; refresh(); track("screen_view"); }
     });
     addEventListener("online", flush);
     document.addEventListener("visibilitychange", () => { if (document.hidden) void flush(); });
